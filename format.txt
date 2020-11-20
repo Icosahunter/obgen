@@ -1,0 +1,31 @@
+obj
+  name              text
+  description       text
+  tag               text
+  attr
+    name            text
+    description     text
+    value           num
+
+obj_def
+  name              text
+  description       text
+  tag               text
+  attr_def
+    name            text
+    description     text
+    min             num
+    max             num
+    typical         num
+    default         num
+    valence         'positive' or 'negative'
+
+obj_build
+  name              text
+  description       text
+  target            xpath boolean expression
+  attr_build
+    name            text
+    description     text
+    target          xpath boolean expression
+    build           xpath, auto, manual, random
