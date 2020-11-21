@@ -6,6 +6,7 @@ obj
     name            text
     description     text
     value           num
+    norm            num (0 - 1)
 
 obj_def
   name              text
@@ -25,7 +26,6 @@ obj_build
   description       text
   target            xpath boolean expression
   attr_build
-    name            text
     description     text
     target          xpath boolean expression
     build           xpath, auto, manual, random
