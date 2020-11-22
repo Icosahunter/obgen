@@ -73,7 +73,7 @@ some references for tags.
 ```
 
 ### Tag Reference
-<obj>
+<obj>:
   - The tag for an object.
 <attr>
   - The tag for an attribute.
