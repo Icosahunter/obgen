@@ -1,5 +1,7 @@
 #Obgen
+
 ---
+
 ##Overview
 Obgen is a command line tool for generating xml objects.
 It is particularly geared towards content generation for games.
@@ -7,20 +9,26 @@ The Obgen toolchain is broken into 3 parts:
   - Objects
   - Object Definitions
   - Builders
+  
 ###Objects
 Objects are what Obgen generates. They are xml objects with a form resembling
 objects in program. Objects have a name, description, tags, and attributes.
+
 ###Object Definitions
 Object definitions define an type of object. An object definition stores things
 like the minimum and maximum values for an attribute and tags that are added to
 all objects of this type.
+
 ###Builders
 Builders define how to generate an object. It specifies how to generate values
 for all the attributes of an object.
+
 ---
+
 ##Syntax
 Below are some example xml documents for each part of the system, as well as
 some references for tags.
+
 ###Object
 `<obj>
   <name>hibiscus</name>
@@ -34,6 +42,7 @@ some references for tags.
     <norm>0.95833333333</value>
   </attr>
 </obj>`
+
 ###Object Definition
 `<obj_def>
   <name>flower</name>
@@ -46,6 +55,7 @@ some references for tags.
     <max>360</max>
   </attr_def>
 </obj_def>`
+
 ###Builder
 `<obj_build>
   <name>red flower builder</name>
@@ -58,6 +68,7 @@ some references for tags.
     <random min="335"/>
   </attr_build>
 </obj_build>`
+
 ###Tag Reference
 <obj>:
   The tag for an object.
