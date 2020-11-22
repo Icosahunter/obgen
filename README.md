@@ -159,13 +159,13 @@ The tag for an attribute.
  The xpath builder tag. Takes a valid xpath as an argument and sets the
  attribute the value of that path. The xpath must be provided as the value
  of the 'path' xml attribute like so:
- 
-`<xpath path="/node1/node2"`
+ `<xpath path="/node1/node2"`
  The root of the path is the definition of the attribute being generated. In
  other words the root will be a <attr_def> tag.
 
 For any of the build tags you can set a min, max, typ, or default in the tag
-using xml attributes like so: `<auto min="0" max="30" typ="20" default="0"/>`
+using xml attributes like so:
+`<auto min="0" max="30" typ="20" default="0"/>`
 These values will only work if they are within any existing bounds provided
 by the attribute definition.
 Another option is round, the value of this is how many decimal places to
