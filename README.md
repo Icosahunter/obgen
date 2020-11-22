@@ -29,21 +29,21 @@ for all the attributes of an object.
 Below are some example xml documents for each part of the system, as well as
 some references for tags.
 
-###Object
-`<obj>
-  <name>hibiscus</name>
-  <class>flower</class>
-  <desc>a beautiful red hibiscus flower</desc>
-  <tag>plant</tag>
-  <attr>
-    <name>hue</name>
-    <desc>the color of the flower</desc>
-    <value>345</value>
-    <norm>0.95833333333</value>
-  </attr>
-</obj>`
+### Object
+><obj>
+>  <name>hibiscus</name>
+>  <class>flower</class>
+>  <desc>a beautiful red hibiscus flower</desc>
+>  <tag>plant</tag>
+>  <attr>
+>    <name>hue</name>
+>    <desc>the color of the flower</desc>
+>    <value>345</value>
+>    <norm>0.95833333333</value>
+>  </attr>
+></obj>`
 
-###Object Definition
+### Object Definition
 `<obj_def>
   <name>flower</name>
   <desc>a colorful plant</desc>
@@ -56,7 +56,7 @@ some references for tags.
   </attr_def>
 </obj_def>`
 
-###Builder
+### Builder
 `<obj_build>
   <name>red flower builder</name>
   <desc>a builder for generating red flowers</desc>
@@ -69,7 +69,7 @@ some references for tags.
   </attr_build>
 </obj_build>`
 
-###Tag Reference
+### Tag Reference
 <obj>
 : The tag for an object.
 <attr>
@@ -144,12 +144,12 @@ by the attribute definition.
 Another option is round, the value of this is how many decimal places to
 round the result to.
 
-##Runing Obgen
+## Runing Obgen
 Currently to generate an object you will need to execute the file 'buildobj'
 with several arguments as follows:
 `python buildobj.py <builder path> <object definition path> [<destination path>]`
 Where [] indicate an optional parameter.
 
-##Give it a Whirl!
+## Give it a Whirl!
 The test.bat file contains the command to generate an object using the included
 test files.
