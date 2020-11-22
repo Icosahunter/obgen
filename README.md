@@ -30,7 +30,8 @@ Below are some example xml documents for each part of the system, as well as
 some references for tags.
 
 ### Object
-```<obj>
+```xml
+<obj>
   <name>hibiscus</name>
   <class>flower</class>
   <desc>a beautiful red hibiscus flower</desc>
@@ -45,7 +46,8 @@ some references for tags.
 ```
 
 ### Object Definition
-```<obj_def>
+```xml
+<obj_def>
   <name>flower</name>
   <desc>a colorful plant</desc>
   <tag>plant</tag>
@@ -59,7 +61,8 @@ some references for tags.
 ```
 
 ### Builder
-```<obj_build>
+```xml
+<obj_build>
   <name>red flower builder</name>
   <desc>a builder for generating red flowers</desc>
   <target>flower</target>
@@ -73,7 +76,7 @@ some references for tags.
 ```
 
 ### Tag Reference
-<obj>:
+<obj>
   - The tag for an object.
 <attr>
   - The tag for an attribute.
