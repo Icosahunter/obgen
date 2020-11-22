@@ -22,6 +22,7 @@ def build_object(obj_builder, obj_def):
 
 
 def create_obj(obj):
+
     name = obj.find('name')
     desc = obj.find('desc')
     tags = obj.findall('tag')
@@ -43,23 +44,47 @@ def create_obj(obj):
 
 
 def build_attribute(attr_build, attr_def):
-    attr = None
 
+    # initialize attribute value to None
+    rval = None
+
+    # get name of builder
     build = attr_build.find('build')[0]
 
-    if build.tag == 'xpath':
-        attr = attr_def.find(build[0].get('path'))
-    elif build.tag == 'linear':
-        attr = attr_lin(attr_def, **build.attrib)
-    elif build.tag == 'exp':
-        attr = attr_exp(attr_def, **build.attrib)
-    elif build.tag == 'manual':
-        attr = attr_manual(attr_def, **build.attrib)
-    elif build.tag == 'auto':
-        attr = attr_auto(attr_def, **build.attrib)
+    # get min max and typical values
+    mmt = get_min_max_typ(attr_def, attr_build)
 
+    # use given atomic builder
+    if build.tag == 'xpath':
+        rval = attr_def.find(build[0].get('path'))
+    elif build.tag == 'linear':
+        rval = attr_unif(mmt, attr_def)
+    elif build.tag == 'exp':
+        rval = attr_tri(mmt, attr_def)
+    elif build.tag == 'manual':
+        rval = attr_manual(mmt, attr_def)
+    elif build.tag == 'auto':
+        rval = attr_auto(mmt, attr_def)
+
+    # default if builder returned None
+    if rval is None and attr_build.get('default') is not None:
+        rval = float(attr_build.get('default').text)
+    else:
+        rval = 0
+
+    # apply rounding if specified
+    if attr_build.get('round') is not None:
+        precision = int(attr_build.get('round').text)
+        rval = round(rval, precision)
+
+    # get remaining values
+    nval = get_norm(mmt, rval)
     tags = attr_def.findall('tag')
-    return create_attr(attr_def.find('name').text, attr_def.find('desc').text, attr[1], attr[0], tags)
+    name = attr_def.find('name').text
+    desc = attr_def.find('desc').text
+
+    # create and return attribute
+    return create_attr(name, desc, rval, nval, tags)
 
 
 def create_attr(name, desc, value, norm, tags=None):
@@ -84,33 +109,25 @@ def create_attr(name, desc, value, norm, tags=None):
     return attr_el
 
 
-def attr_lin(attr_def, **kwargs):
-    min, max, typ = get_min_max_typ(attr_def, **kwargs)
+def attr_unif(mmt, attr_def):
 
-    nval = random.random()
-    rval = (max - min) * nval + min
+    min, max, typ = mmt
+    rval = random.uniform(min, max)
 
-    if 'round' in kwargs:
-        rval = round(rval, int(kwargs['round']))
-
-    return (nval, rval)
+    return rval
 
 
-def attr_exp(attr_def, **kwargs):
-    min, max, typ = get_min_max_typ(attr_def, **kwargs)
+def attr_tri(mmt, attr_def):
 
-    typ = (typ - min) / (max - min)
-    nval = random.random()
-    nval = math.pow(nval, math.log(typ, 0.5))
-    rval = (max - min) * nval + min
+    min, max, typ = mmt
+    rval = random.triangular(min, max, typ)
 
-    if 'round' in kwargs:
-        rval = round(rval, int(kwargs['round']))
-
-    return (nval, rval)
+    return rval
 
 
-def attr_manual(attr_def, **kwargs):
+def attr_manual(mmt, attr_def):
+    min, max, typ = mmt
+
     atnm = attr_def.find('name')
     min = attr_def.find('min')
     max = attr_def.find('max')
@@ -132,42 +149,38 @@ def attr_manual(attr_def, **kwargs):
     min = 0 if attr_def.find('min') is None else float(attr_def.find('min').text)
     max = 1 if attr_def.find('max') is None else float(attr_def.find('max').text)
     rval = float(rval)
-    nval = (rval - min) / (max - min)
 
-    if 'round' in kwargs:
-        rval = round(rval, int(kwargs['round']))
-
-    return (nval, rval)
+    return rval
 
 
-def attr_auto(attr_def, **kwargs):
-    min = attr_def.find('min')
-    max = attr_def.find('max')
-    typ = attr_def.find('typical')
-    dft = attr_def.find('default')
-    nval = 0
-    rval = 0
+def attr_auto(mmt, attr_def):
+
+    min, max, typ = mmt
+    rval = None
 
     if min is not None and max is not None:
-        nval, rval = attr_exp(attr_def)
+        rval = attr_exp(mmt, attr_def)
     else:
-        nval = 0.5
         if typ is not None:
             rval = float(typ.text)
-        else:
-            if dft is not None:
-                rval = float(dft.text)
 
-    if 'round' in kwargs:
-        rval = round(rval, int(kwargs['round']))
-
-    return (nval, rval)
+    return rval
 
 
-def get_min_max_typ(attr_def, **kwargs):
+def get_norm(mmt, val):
+    min, max, typ = mmt
+    typ = (typ - min) / (max - min)
+    nval = (val - min) / (max - min)
+    nval = math.pow(nval, math.log(typ, 0.5))
+    return nval
+
+
+def get_min_max_typ(attr_def, attr_build):
     max = None
     min = None
     typ = None
+
+    kwargs = attr_build.attrib
 
     if attr_def.find('min') is not None:
         mn = float(attr_def.find('min').text)
@@ -211,7 +224,7 @@ if __name__ == "__main__":
     obj_build = ElementTree.parse(obj_builder_path)
     obj_def = ElementTree.parse(obj_def_path)
 
-    dest_path = './' + ''.join(random.choice(string.ascii_lowercase) for i in range(5)) + '.obg'
+    dest_path = './' + ''.join(random.choice(string.ascii_lowercase) for i in range(5)) + '.xml'
     if len(sys.argv) >= 4:
         dest_path = sys.argv[3]
 
