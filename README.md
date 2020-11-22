@@ -159,7 +159,7 @@ The tag for an attribute.
  The xpath builder tag. Takes a valid xpath as an argument and sets the
  attribute the value of that path. The xpath must be provided as the value
  of the 'path' xml attribute like so:
- `<xpath path="/node1/node2"`
+ `<xpath path="/node1/node2" />`
  The root of the path is the definition of the attribute being generated. In
  other words the root will be a <attr_def> tag.
 
