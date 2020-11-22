@@ -176,7 +176,8 @@ round the result to.
 ## Runing Obgen
 Currently to generate an object you will need to execute the file 'buildobj'
 with several arguments as follows:
-```python buildobj.py <builder path> <object definition path> [<destination path>]
+``` cmd
+python buildobj.py <builder path> <object definition path> [<destination path>]
 ```
 Where [] indicate an optional parameter.
 
