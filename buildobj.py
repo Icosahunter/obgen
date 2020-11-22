@@ -67,14 +67,17 @@ def build_attribute(attr_build, attr_def):
         rval = attr_auto(mmt, attr_def)
 
     # default if builder returned None
-    if rval is None and attr_build.get('default') is not None:
-        rval = float(attr_build.get('default').text)
-    else:
-        rval = 0
+    if rval is None:
+        if build.get('default') is not None:
+            rval = float(build.get('default'))
+        elif attr_def.get('default') is not None:
+            rval = float(attr_def.get('default'))
+        else:
+            rval = 0
 
     # apply rounding if specified
-    if attr_build.get('round') is not None:
-        precision = int(attr_build.get('round').text)
+    if build.get('round') is not None:
+        precision = int(build.get('round'))
         rval = round(rval, precision)
 
     # get remaining values
@@ -159,7 +162,7 @@ def attr_auto(mmt, attr_def):
     rval = None
 
     if min is not None and max is not None:
-        rval = attr_exp(mmt, attr_def)
+        rval = attr_tri(mmt, attr_def)
     else:
         if typ is not None:
             rval = float(typ.text)
