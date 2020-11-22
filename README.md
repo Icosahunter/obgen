@@ -1,8 +1,8 @@
-#Obgen
+# Obgen
 
 ---
 
-##Overview
+## Overview
 Obgen is a command line tool for generating xml objects.
 It is particularly geared towards content generation for games.
 The Obgen toolchain is broken into 3 parts:
@@ -10,41 +10,41 @@ The Obgen toolchain is broken into 3 parts:
   - Object Definitions
   - Builders
   
-###Objects
+### Objects
 Objects are what Obgen generates. They are xml objects with a form resembling
 objects in program. Objects have a name, description, tags, and attributes.
 
-###Object Definitions
+### Object Definitions
 Object definitions define an type of object. An object definition stores things
 like the minimum and maximum values for an attribute and tags that are added to
 all objects of this type.
 
-###Builders
+### Builders
 Builders define how to generate an object. It specifies how to generate values
 for all the attributes of an object.
 
 ---
 
-##Syntax
+## Syntax
 Below are some example xml documents for each part of the system, as well as
 some references for tags.
 
 ### Object
-><obj>
->  <name>hibiscus</name>
->  <class>flower</class>
->  <desc>a beautiful red hibiscus flower</desc>
->  <tag>plant</tag>
->  <attr>
->    <name>hue</name>
->    <desc>the color of the flower</desc>
->    <value>345</value>
->    <norm>0.95833333333</value>
->  </attr>
-></obj>`
+```<obj>
+  <name>hibiscus</name>
+  <class>flower</class>
+  <desc>a beautiful red hibiscus flower</desc>
+  <tag>plant</tag>
+  <attr>
+    <name>hue</name>
+    <desc>the color of the flower</desc>
+    <value>345</value>
+    <norm>0.95833333333</value>
+  </attr>
+</obj>```
 
 ### Object Definition
-`<obj_def>
+```<obj_def>
   <name>flower</name>
   <desc>a colorful plant</desc>
   <tag>plant</tag>
@@ -54,10 +54,10 @@ some references for tags.
     <min>0</min>
     <max>360</max>
   </attr_def>
-</obj_def>`
+</obj_def>```
 
 ### Builder
-`<obj_build>
+```<obj_build>
   <name>red flower builder</name>
   <desc>a builder for generating red flowers</desc>
   <target>flower</target>
@@ -67,7 +67,7 @@ some references for tags.
     <target>hue</target>
     <random min="335"/>
   </attr_build>
-</obj_build>`
+</obj_build>```
 
 ### Tag Reference
 <obj>
@@ -144,11 +144,15 @@ by the attribute definition.
 Another option is round, the value of this is how many decimal places to
 round the result to.
 
+---
+
 ## Runing Obgen
 Currently to generate an object you will need to execute the file 'buildobj'
 with several arguments as follows:
 `python buildobj.py <builder path> <object definition path> [<destination path>]`
 Where [] indicate an optional parameter.
+
+---
 
 ## Give it a Whirl!
 The test.bat file contains the command to generate an object using the included
