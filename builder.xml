@@ -1,0 +1,12 @@
+<obj_build>
+  <name>frame builder</name>
+  <desc>a basic builder for mech frames</desc>
+  <target>name='frame'</target>
+  <attr_build>
+    <desc>default attribute builder</desc>
+    <target>attr_def</target>
+    <build>
+      <auto round='0'/>
+    </build>
+  </attr_build>
+</obj_build>

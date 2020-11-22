@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+<obj>
+    <class>frame</class>
+    <desc>frame component for medium mechs</desc>
+    <tag>medium</tag>
+    <attr>
+        <name>weight</name>
+        <desc>frame weight</desc>
+        <value>24.0</value>
+        <norm>0.28768411891525225</norm>
+    </attr>
+    <attr>
+        <name>height</name>
+        <desc>frame height</desc>
+        <value>40.0</value>
+        <norm>0.3225208772935674</norm>
+    </attr>
+    <attr>
+        <name>cooling</name>
+        <desc>frame cooling</desc>
+        <value>7.0</value>
+        <norm>0.1368921486228163</norm>
+    </attr>
+</obj>

@@ -1,0 +1,23 @@
+<obj_def>
+  <name>frame</name>
+  <desc>frame component for medium mechs</desc>
+  <tag>medium</tag>
+  <attr_def>
+    <name>weight</name>
+    <desc>frame weight</desc>
+    <min>20</min>
+    <max>35</max>
+  </attr_def>
+  <attr_def>
+    <name>height</name>
+    <desc>frame height</desc>
+    <min>35</min>
+    <max>50</max>
+  </attr_def>
+  <attr_def>
+    <name>cooling</name>
+    <desc>frame cooling</desc>
+    <min>5</min>
+    <max>20</max>
+  </attr_def>
+</obj_def>
