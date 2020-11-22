@@ -77,7 +77,7 @@ some references for tags.
 
 ### Tag Reference
 <obj>
-  - The tag for an object.
+ > The tag for an object.
 <attr>
   - The tag for an attribute.
 <obj_def>
