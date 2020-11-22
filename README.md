@@ -76,65 +76,65 @@ some references for tags.
 ```
 
 ### Tag Reference
-<obj>
- > The tag for an object.
-<attr>
+`<obj>`
+ : The tag for an object.
+`<attr>`
   - The tag for an attribute.
-<obj_def>
+`<obj_def>`
   - The tag for an object definition.
-<attr_def>
+`<attr_def>`
   - The tag for an attribute definition.
-<obj_build>
+`<obj_build>`
   - The tag for an object builder.
-<attr_build>
+`<attr_build>`
   - The tag for an attribute builder.
-<name>
+`<name>`
   - The name of the parent element. This could be an object, object definition,
   attribute, attribute definition, builder, or attribute builder.
-<desc>
+`<desc>`
   - A description of the parent element. This could be an object, object
   definition, attribute, attribute definition, builder, or attribute builder.
-<tag>
+`<tag>`
   - A tag to help locate an element. These can be present in objects, object
   definitions, attributes, attribute definitions, builders, or attribute
   builders. They are particularly helpful to include in object definitions
   and attribute definitions however because builders can use them in targeting.
-<class>
+`<class>`
   - The type of an object. This will be the name of the object definition used
   to generate the object.
-<target>
+`<target>`
   - Used to select an object or an attribute from within an object to apply a
   builder to. The value of target should be a valid xpath.
-<min>
+`<min>`
   - The minimum value for an attribute. Used only in attribute definitions.
-<max>
+`<max>`
   - The maximum value for an attribute. Used only in attribute definitions.
-<typ>
+`<typ>`
   - The typical/average value for an attribute. Used only in attribute
   definitions.
-<default>
+`<default>`
   - The default value for an attribute. Used only in attribute definitions.
-<valence>
+`<valence>`
   - A value of "positive" indicates it is "good" for the attribute to be
   larger, while a value of "negative" indicates it is "good" for the attribute
   to be smaller. Used only in attribute definitions.
-<build>
+`<build>`
   - The value of this defines the type of builder to use for an attribute builder.
   The value must be a valid builder tag.
-<auto>
+`<auto>`
   - The automatic builder tag. This chooses a random value if enough information
   is supplied by the attribute definition, otherwise it chooses the typical or
   default value if supplied by the definition, and finally it defaults to 0 if
   nothing is provided.
-<lin>
+`<lin>`
   - The linear random builder tag. Selects a random value between min and max.
-<exp>
+`<exp>`
   - The exponential random builder tag. Selects a random value between min and
   max using an exponential that passes through typ at the halfway point, such
   that the average will be typ.
-<manual>
+`<manual>`
   - The manual builder tag. Prompts the user to enter a value between min and max.
-<xpath>
+`<xpath>`
   - The xpath builder tag. Takes a valid xpath as an argument and sets the
   attribute the value of that path. The xpath must be provided as the value
   of the 'path' xml attribute like so:
