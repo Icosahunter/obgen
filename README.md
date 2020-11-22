@@ -41,7 +41,8 @@ some references for tags.
     <value>345</value>
     <norm>0.95833333333</value>
   </attr>
-</obj>```
+</obj>
+```
 
 ### Object Definition
 ```<obj_def>
@@ -54,7 +55,8 @@ some references for tags.
     <min>0</min>
     <max>360</max>
   </attr_def>
-</obj_def>```
+</obj_def>
+```
 
 ### Builder
 ```<obj_build>
@@ -67,7 +69,8 @@ some references for tags.
     <target>hue</target>
     <random min="335"/>
   </attr_build>
-</obj_build>```
+</obj_build>
+```
 
 ### Tag Reference
 <obj>
