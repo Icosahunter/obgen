@@ -165,8 +165,7 @@ The tag for an attribute.
  other words the root will be a <attr_def> tag.
 
 For any of the build tags you can set a min, max, typ, or default in the tag
-using xml attributes like so:
-`<auto min="0" max="30" typ="20" default="0"/>`
+using xml attributes like so: `<auto min="0" max="30" typ="20" default="0"/>`
 These values will only work if they are within any existing bounds provided
 by the attribute definition.
 Another option is round, the value of this is how many decimal places to
