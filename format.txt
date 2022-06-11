@@ -29,3 +29,6 @@ obj_build
     description     text
     target          xpath boolean expression
     build           xpath, auto, manual, random
+
+
+setup -> build -> finish
